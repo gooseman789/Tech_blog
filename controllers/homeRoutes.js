@@ -23,7 +23,7 @@ router.get('/post/:id', async (req, res) => {
             ]
         });
         if (postsData) {
-            const post = postData.get({ plain: true})
+            const post = postsData.get({ plain: true})
             res.render('single', { post })
         } else {
             res.status(404).end()

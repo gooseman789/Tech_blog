@@ -1,12 +1,12 @@
 const router = require('express').Router()
 const { Post } = require("../models")
-const withAuth = require("../utils/auth.js")
+const withAuth = require("../utils/auth")
 
 router.get('/', withAuth, async (req,res) => {
     try {
         const postsData = await Post.findAll({
             where: {
-                userId: req.sessions.userId
+                userId: req.session.userId
             }
         })
         const posts = postsData.map((post) => post.get({plain:true}))
@@ -21,7 +21,7 @@ router.get('/', withAuth, async (req,res) => {
 
 router.get('/new', withAuth, (req, res) => {
     res.render('new', {
-        layout: 'dashbord'
+        layout: 'dashboard'
     })
 })
 

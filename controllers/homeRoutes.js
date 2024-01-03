@@ -2,12 +2,17 @@ const router = require('express').Router()
 const { Post, Comment, User } = require('../models')
 
 router.get('/', async (req, res) => {
+    console.log("hello")
     try {
         const postsData = await Post.findAll({
             include: [User],
         })
+        console.log(req.session)
+        res.render('allPosts', { 
+            layout: 'main',
+            postsData })
     } catch (err) {
-        res.status(500).json
+        res.status(500).json(err)
     }
 });
 
@@ -33,8 +38,10 @@ router.get('/post/:id', async (req, res) => {
     }
 })
 
-router.get('/login', (req,res) => {
+router.get('/login', (req, res) => {
+    console.log("outside")
     if (req.session.loggedIn) {
+        console.log("test1")
         res.redirect('/')
         return
     }

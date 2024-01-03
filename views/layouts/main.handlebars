@@ -12,11 +12,12 @@
         <ul class="nav-bar">
             <li class="navitem"><a href="/">Home</a></li>
             <li class="navitem"><a href="/dashboard">Dashboard</a></li>
-            {{#if !logged_in}}
+            {{log loggedIn}}
+            {{!-- {{#if !loggedIn}}
             <li class="navitem"><a href="/login">Login</a></li>
             {{else}}
             <li class="navitem"><a href="#" id="logout">Logout</a></li>
-            {{/if}}
+            {{/if}} --}}
         </ul>
     </nav>
     <header>

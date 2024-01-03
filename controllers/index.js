@@ -7,3 +7,5 @@ const dashRoutes = require('./dashRoutes')
 router.use('/', homeRoutes)
 router.use('/dashboard', dashRoutes)
 router.use('/api', apiRoutes)
+
+module.exports = router 

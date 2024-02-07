@@ -34,12 +34,26 @@ router.post('/login', async (req,res) => {
             res.status(400).json({ message: 'No user account found!'})
             return
         }
-        req.session.save(() => {
-            req.session.userId = user.id
-            req.session.username = user.username
-            req.session.loggedIn =  true
-            res.json({user, message: 'You are now logged in!'})
-        })
+        try {
+            await new Promise((resolve, reject) => {
+                req.session.save((err) => {
+                    if (err) {
+                        reject(err)
+                    } else {
+                        resolve()
+                    }
+                })
+            })
+            req.session.save(() => {
+                req.session.userId = user.id
+                req.session.username = user.username
+                req.session.loggedIn =  true
+                res.json({user, message: 'You are now logged in!'})
+            })
+            console.log(req.session.userId, req.session.username, req.session.loggedIn )
+        } catch (saveErr) {
+            console.error("Error saving session: ", saveErr)
+        }
     } catch (err) {
         res.status(400).json({ message: 'No user account found!'})
     }

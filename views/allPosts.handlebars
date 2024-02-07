@@ -1,7 +1,7 @@
-<div>
+<div class="posts">
     {{#each posts}}
-    <article>
-        <div>
+    <article class="card">
+        <div class="flex-row justify-space-between card-header">
             <h2>
                 <a href="/post/{{id}}">{{title}}</a>
             </h2>
@@ -9,7 +9,7 @@
                 Made by {{User.username}} on {{format_date createdAt}}
             </div>
         </div>
-        <div>
+        <div class="card-body">
             {{body}}
         </div>
     </article>

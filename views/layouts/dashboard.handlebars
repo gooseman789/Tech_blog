@@ -7,25 +7,22 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
+<body class="flex-column min-100-vh">
     <nav class="navbar"> 
-        <ul class="nav-bar">
-            <li class="navitem"><a href="/">Home</a></li>
-            <li class="navitem"><a href="/dashboard">Dashboard</a></li>
-            {{#if !loggedIn}}
-            <li class="navitem"><a href="/login">Login</a></li>
-            {{else}}
-            <li class="navitem"><a href="#" id="logout">Logout</a></li>
-            {{/if}}
+        <ul>
+        <li class="li-inline nav-item"><a href="/">Home</a></li>
+        <li class="li-inline nav-item"><a href="/dashboard">Dashboard</a></li>
+        <li class="li-inline nav-item"><a href="/login">Login</a></li>
+        <li class="li-inline nav-item"><a href="#" id="logout-link">Logout</a></li>
         </ul>
     </nav>
-    <header>
+    <header class="hero">
         <h1 class="title"><a href="/dashboard">Your Dashboard</a></h1>
     </header> 
-    <div>
+    <div class="col-auto">
         <a href="/dashboard/new">Make a new post?</a>
     </div>
-    <main>
+    <main class="footer flex-row justify-center">
         {{{body}}}
     </main>
     <script src="/js/logout.js"></script>
